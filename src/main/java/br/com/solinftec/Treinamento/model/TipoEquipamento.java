@@ -15,4 +15,6 @@ public class TipoEquipamento {
 
     @Column(name = "DESCRICAO")
     private String descricao;
+
+
 }

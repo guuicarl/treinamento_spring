@@ -1,5 +1,6 @@
 package br.com.solinftec.Treinamento.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Fazenda {
 
     @ManyToOne
     @JoinColumn(name = "ID_FAZENDEIRO")
+    @JsonManagedReference
     private Fazendeiro fazendeiro;
 
 }

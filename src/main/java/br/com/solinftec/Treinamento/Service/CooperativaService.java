@@ -1,11 +1,14 @@
 package br.com.solinftec.Treinamento.Service;
 
+import br.com.solinftec.Treinamento.dto.cooperativa.CooperativaDto;
 import br.com.solinftec.Treinamento.dto.cooperativa.GetAllCooperativaDto;
 import br.com.solinftec.Treinamento.dto.cooperativa.SaveCooperativaDto;
 import br.com.solinftec.Treinamento.model.Cooperativa;
 import br.com.solinftec.Treinamento.model.Fazendeiro;
 import br.com.solinftec.Treinamento.repository.CooperativaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,5 +68,21 @@ public class CooperativaService {
         } else {
             throw new Exception("COOPERATIVA_NOT_FOUND");
         }
+    }
+
+    public CooperativaDto getCooperativa(Long idCooperativa) throws Exception {
+
+        Optional<Cooperativa> cooperativa = repository.findById(idCooperativa);
+
+        if(cooperativa.isPresent()) {
+            return new CooperativaDto(cooperativa.get());
+        } else {
+            throw new Exception("COOPERATIVA_NOT_FOUND");
+        }
+    }
+
+    public Page<CooperativaDto> getPage(Pageable pageable, String search) {
+        Page<Cooperativa> page = repository.findAllPaged(pageable, search);
+        return page.map(cooperativa -> new CooperativaDto(cooperativa));
     }
 }
