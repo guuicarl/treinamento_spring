@@ -103,4 +103,9 @@ public class CooperativaResource {
         }
     }
 
+    @GetMapping("/ativos")
+    public ResponseEntity<List<CooperativaDto>> getCooperativasAtivas() {
+        return ResponseEntity.ok().body(service.getCooperativasAtivas());
+    }
+
 }

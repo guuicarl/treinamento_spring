@@ -1,8 +1,10 @@
 package br.com.solinftec.Treinamento.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,5 +26,9 @@ public class Produto {
 
     @Column(name = "ATIVO")
     private Boolean ativo;
+
+    @OneToMany(mappedBy = "ID_PRODUTO")
+    @JsonBackReference
+    private List<OrdemServico> ordemServicos;
 
 }

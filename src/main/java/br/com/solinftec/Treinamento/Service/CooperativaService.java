@@ -85,4 +85,10 @@ public class CooperativaService {
         Page<Cooperativa> page = repository.findAllPaged(pageable, search);
         return page.map(cooperativa -> new CooperativaDto(cooperativa));
     }
+
+    public List<CooperativaDto> getCooperativasAtivas() {
+        return repository.findCooperativaByAtivoEqualsAndIdEqualsOrderById(true, 3L)
+                .stream().map(CooperativaDto::new)
+                .collect(Collectors.toList());
+    }
 }

@@ -2,8 +2,6 @@ package br.com.solinftec.Treinamento.configuration;
 
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
